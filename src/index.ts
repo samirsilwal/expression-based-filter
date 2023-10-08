@@ -1,9 +1,5 @@
-import { generatePredicateFromConfig } from "./compute"
 import { OPERATOR } from "./operators"
-
-export const one = 1
-export const two = 2
-
+import { generatePredicateFromConfig } from "./compute"
 
 const data = [
   {

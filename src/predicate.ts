@@ -48,6 +48,20 @@ export class Predicate {
 
     return this
   }
+
+  isEqualTo(a: number, t: OPERATOR) {
+    this.queue.enqueue({
+      type: t,
+      chain: this.chainOperator,
+      method: (value: number) => {
+        this.result = this.chainOperator == ChainOperator.OR ? this.result || value == a : this.result && value == a
+        return this.result
+      }
+    })
+
+    return this
+  }
+
   isLessThanInclusive(a: number, t: OPERATOR) {
     this.queue.enqueue({
       type: t,
@@ -60,24 +74,12 @@ export class Predicate {
 
     return this
   }
-  isGreaterThenInclusive(a: number, t: OPERATOR) {
+  isGreaterThanInclusive(a: number, t: OPERATOR) {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
       method: (value: number) => {
         this.result = this.chainOperator == ChainOperator.OR ? this.result || value >= a : this.result && value >= a
-        return this.result
-      }
-    })
-
-    return this
-  }
-  isEqualTo(a: number, t: OPERATOR) {
-    this.queue.enqueue({
-      type: t,
-      chain: this.chainOperator,
-      method: (value: number) => {
-        this.result = this.chainOperator == ChainOperator.OR ? this.result || value == a : this.result && value == a
         return this.result
       }
     })
