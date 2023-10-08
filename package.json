@@ -8,7 +8,10 @@
   "scripts": {
     "build": "bun run build.mjs",
     "prepublishOnly": "bun run build",
-    "start": "yarn build && node ./dist/index.js"
+    "start": "yarn build && node ./dist/index.js",
+    "lint": "tslint -c tslint.json '{src,test}/**/*.{ts,js}' ",
+    "lint:fix": "tslint --fix -c tslint.json '{src,test}/**/*.{ts,js}'",
+    "prettify": "prettier --write '{src,test}/**/*.{ts,js}'"
   },
   "files": [
     "dist"
@@ -25,10 +28,21 @@
   "bugs": {
     "url": "https://github.com/samirsilwal/expression-based-filter/issues"
   },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "tslint --fix -c tslint.json",
+      "prettier --write '{src,test}/**/*.{ts,js}'",
+      "git add"
+    ]
+  },
   "author": "Samir Silwal <samirsilwal2424@gmail.com>",
   "devDependencies": {
     "bun-plugin-dts": "^0.1.0",
     "bun-types": "^1.0.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "prettier": "^2.0.5",
+    "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.6.0",
+    "tslint-no-unused-expression-chai": "^0.0.3"
   }
 }

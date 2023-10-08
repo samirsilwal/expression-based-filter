@@ -7,7 +7,7 @@ Filters the given object based on the predicate configuration
 ### Config 
   **operand** - The key of value we are trying to compare from given object. <br>
   **operator** - Operator desired to be performed to operand.<br>
-  **compareWith** - Can be a value (number for now) or a key of the object we desire operand to be compared with. It begins with `$.` example: `$.key1.nestedKey`
+  **compareWith** - Can be a value (number or string) or a key of the object we desire operand to be compared with. It begins with `$.` example: `$.key1.nestedKey`
 
 ```
 config = [

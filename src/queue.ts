@@ -1,4 +1,4 @@
-import { QueueContent, QueueElement } from "./domains/QueueElements";
+import { QueueContent, QueueElement } from './domains/QueueElements';
 
 export class Queue {
   private head: number;

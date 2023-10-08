@@ -1,4 +1,4 @@
-import { OPERATOR } from "../operators";
+import { OPERATOR } from '../operators';
 
 export interface Config {
   operand: string;

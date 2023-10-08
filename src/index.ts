@@ -1,5 +1,5 @@
-import { OPERATOR } from "./operators"
-import { generatePredicateFromConfig } from "./compute"
+import { OPERATOR } from './operators';
+import { generatePredicateFromConfig } from './compute';
 
 const data = [
   {
@@ -18,7 +18,7 @@ const data = [
       nested: 11
     }
   }
-]
+];
 
 const config = [
   {
@@ -30,15 +30,17 @@ const config = [
     operand: 'value2',
     operator: OPERATOR.andIsLessThan,
     compareWith: '$.test.nested'
-  },
+  }
   // {
   //   operand: 'value2',
   //   operator: OPERATOR.andIsEqualTo,
   //   compareWith: 8
   // }
-]
+];
 
-console.log(data.filter(obj => {
-  const exp = generatePredicateFromConfig(config, obj)
-  return exp.computeFor(obj, config)
-}))
+console.log(
+  data.filter(obj => {
+    const exp = generatePredicateFromConfig(config, obj);
+    return exp.computeFor(obj, config);
+  })
+);
