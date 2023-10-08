@@ -55,3 +55,8 @@ data.filter(obj => {
   return exp.computeFor(obj, config)
 })
 ```
+
+## TODO
+
+- Add operators for string comparison
+- Add interfaces and fix types
