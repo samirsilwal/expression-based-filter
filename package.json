@@ -1,10 +1,10 @@
 {
   "type": "module",
-  "name": "pkg-name",
+  "name": "expression-based-filter",
   "version": "0.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "description": "",
+  "description": "Filter data based on given predicate config",
   "scripts": {
     "build": "bun run build.mjs",
     "prepublishOnly": "bun run build",
@@ -16,10 +16,16 @@
   "keywords": [
     "bun"
   ],
+  "homepage": "https://github.com/samirsilwal/expression-based-filter#readme",
   "license": "MIT",
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "git@github.com:samirsilwal/expression-based-filter.git"
   },
+  "bugs": {
+    "url": "https://github.com/samirsilwal/expression-based-filter/issues"
+  },
+  "author": "Samir Silwal <samirsilwal2424@gmail.com>",
   "devDependencies": {
     "bun-plugin-dts": "^0.1.0",
     "bun-types": "^1.0.1",
