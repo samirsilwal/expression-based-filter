@@ -11,3 +11,4 @@ export function flatten(obj: any, roots: string[] = [], sep = '.'): Object {
       )
     }, {})
 }
+
