@@ -1,3 +1,4 @@
+import { Config } from './domains/Config';
 import { ChainOperator, OPERATOR } from './operators'
 import { Queue } from './queue'
 
@@ -6,14 +7,16 @@ export class Predicate {
   private chainOperator: ChainOperator = ChainOperator.OR;
   private result: boolean = true
 
-  computeFor(obj: any, config: any) {
+  computeFor(obj: any, configs: Config[]) {
     while (!this.queue.isEmpty) {
       const firstOnQueue = this.queue.dequeue()
       this.chainOperator = firstOnQueue.chain
 
-      const c = config.find((c: any) => c.operator === firstOnQueue.type)
+      const conf = configs.find((c: Config) => c.operator === firstOnQueue.type)
 
-      firstOnQueue.method(obj[c.operand])
+      if (conf) {
+        firstOnQueue.method(obj[conf.operand])
+      }
     }
     const computed = this.result
 

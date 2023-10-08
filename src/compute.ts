@@ -1,7 +1,8 @@
+import { Config } from "./domains/Config";
 import { Predicate } from "./predicate";
 import { createExpressionFromConfig, flatten } from "./util";
 
-export function generatePredicateFromConfig(configs: any, obj: any) {
+export function generatePredicateFromConfig(configs: Config[], obj: any) {
   let exp = new Predicate()
 
   for (const conf of configs) {
