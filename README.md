@@ -56,7 +56,12 @@ data.filter(obj => {
 })
 ```
 
+## Run
+
+```
+yarn start
+```
+
 ## TODO
 
 - Add operators for string comparison
-- Add interfaces and fix types
