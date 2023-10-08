@@ -30,7 +30,9 @@ export class Predicate {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
-      method: (value: number) => {
+      method: (value: number | string) => {
+        if (typeof value == 'string') return this.result;
+
         this.result = this.chainOperator == ChainOperator.OR ? this.result || value < a : this.result && value < a
         return this.result
       }
@@ -43,7 +45,9 @@ export class Predicate {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
-      method: (value: number) => {
+      method: (value: number | string) => {
+        if (typeof value == 'string') return this.result;
+
         this.result = this.chainOperator == ChainOperator.OR ? this.result || value > a : this.result && value > a
         return this.result
       }
@@ -52,12 +56,27 @@ export class Predicate {
     return this
   }
 
-  isEqualTo(a: number, t: OPERATOR) {
+  isEqualTo(a: number | string, t: OPERATOR) {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
-      method: (value: number) => {
+      method: (value: number | string) => {
         this.result = this.chainOperator == ChainOperator.OR ? this.result || value == a : this.result && value == a
+        return this.result
+      }
+    })
+
+    return this
+  }
+
+  hasSubstring(a: string, t: OPERATOR) {
+    this.queue.enqueue({
+      type: t,
+      chain: this.chainOperator,
+      method: (value: number | string) => {
+        if (typeof value == 'number') return this.result;
+
+        this.result = this.chainOperator == ChainOperator.OR ? this.result || value.includes(a) : this.result && value.includes(a)
         return this.result
       }
     })
@@ -69,7 +88,9 @@ export class Predicate {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
-      method: (value: number) => {
+      method: (value: number | string) => {
+        if (typeof value == 'string') return this.result;
+
         this.result = this.chainOperator == ChainOperator.OR ? this.result || value <= a : this.result && value <= a
         return this.result
       }
@@ -81,7 +102,9 @@ export class Predicate {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
-      method: (value: number) => {
+      method: (value: number | string) => {
+        if (typeof value == 'string') return this.result;
+
         this.result = this.chainOperator == ChainOperator.OR ? this.result || value >= a : this.result && value >= a
         return this.result
       }

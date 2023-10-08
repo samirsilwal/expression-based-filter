@@ -14,26 +14,30 @@ export function flatten(obj: any, roots: string[] = [], sep = '.'): Object {
     }, {})
 }
 
-export function createExpressionFromConfig(operator: OPERATOR, value: number, exp: Predicate) {
+export function createExpressionFromConfig(operator: OPERATOR, value: number | string, exp: Predicate) {
   switch (operator) {
     case OPERATOR.isEqualTo:
       exp = exp.isEqualTo(value, operator)
 
       break;
     case OPERATOR.isLessThan:
-      exp = exp.isLessThan(value, operator)
+      exp = exp.isLessThan(+value, operator)
 
       break;
     case OPERATOR.isGreaterThan:
-      exp = exp.isGreaterThan(value, operator)
+      exp = exp.isGreaterThan(+value, operator)
 
       break;
     case OPERATOR.isLessThanInclusive:
-      exp = exp.isLessThanInclusive(value, operator)
+      exp = exp.isLessThanInclusive(+value, operator)
 
       break;
     case OPERATOR.isGreaterThanInclusive:
-      exp = exp.isGreaterThanInclusive(value, operator)
+      exp = exp.isGreaterThanInclusive(+value, operator)
+
+      break;
+    case OPERATOR.hasSubstring:
+      exp = exp.hasSubstring(String(value), operator)
 
       break;
 
@@ -43,29 +47,33 @@ export function createExpressionFromConfig(operator: OPERATOR, value: number, ex
 
       break;
     case OPERATOR.andIsLessThan:
-      exp.and().isLessThan(value, operator)
+      exp.and().isLessThan(+value, operator)
 
       break;
     case OPERATOR.andIsGreaterThan:
-      exp = exp.and().isGreaterThan(value, operator)
+      exp = exp.and().isGreaterThan(+value, operator)
 
       break;
     case OPERATOR.andIsLessThanInclusive:
-      exp.and().isLessThanInclusive(value, operator)
+      exp.and().isLessThanInclusive(+value, operator)
 
       break;
     case OPERATOR.andIsGreaterThanInclusive:
-      exp = exp.and().isGreaterThanInclusive(value, operator)
+      exp = exp.and().isGreaterThanInclusive(+value, operator)
+
+      break;
+    case OPERATOR.hasSubstring:
+      exp = exp.and().hasSubstring(String(value), operator)
 
       break;
 
     // OR chained
     case OPERATOR.orIsLessThan:
-      exp = exp.or().isLessThan(value, operator)
+      exp = exp.or().isLessThan(+value, operator)
 
       break;
     case OPERATOR.orIsGreaterThan:
-      exp = exp.or().isGreaterThan(value, operator)
+      exp = exp.or().isGreaterThan(+value, operator)
 
       break;
     case OPERATOR.orIsEqualTo:
@@ -73,11 +81,15 @@ export function createExpressionFromConfig(operator: OPERATOR, value: number, ex
 
       break;
     case OPERATOR.orIsLessThanInclusive:
-      exp = exp.or().isLessThanInclusive(value, operator)
+      exp = exp.or().isLessThanInclusive(+value, operator)
 
       break;
     case OPERATOR.orIsGreaterThanInclusive:
-      exp = exp.or().isGreaterThanInclusive(value, operator)
+      exp = exp.or().isGreaterThanInclusive(+value, operator)
+
+      break;
+    case OPERATOR.hasSubstring:
+      exp = exp.or().hasSubstring(String(value), operator)
 
       break;
 

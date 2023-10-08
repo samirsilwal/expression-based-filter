@@ -7,7 +7,7 @@ export interface Mapping<T> {
 export interface QueueContent {
   type: OPERATOR,
   chain: ChainOperator,
-  method: (val: number) => boolean
+  method: (val: number | string) => boolean
 }
 
 export type QueueElement = Mapping<QueueContent>

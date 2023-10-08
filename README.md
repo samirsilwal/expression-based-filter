@@ -64,4 +64,4 @@ yarn start
 
 ## TODO
 
-- Add operators for string comparison
+- Add tests
