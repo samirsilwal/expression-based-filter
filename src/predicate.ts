@@ -5,7 +5,7 @@ import { Queue } from './queue';
 export class Predicate {
   private queue = new Queue();
   private chainOperator: ChainOperator = ChainOperator.OR;
-  private result: boolean = true;
+  private result: boolean = false;
 
   computeFor(obj: any, configs: Config[]) {
     while (!this.queue.isEmpty) {
@@ -25,7 +25,21 @@ export class Predicate {
 
     return computed;
   }
+  computeForVal(val: number | string) {
+    while (!this.queue.isEmpty) {
+      const firstOnQueue = this.queue.dequeue();
+      this.chainOperator = firstOnQueue.chain;
 
+      firstOnQueue.method(val);
+    }
+
+    const computed = this.result;
+
+    this.result = true;
+    this.chainOperator = ChainOperator.OR;
+
+    return computed;
+  }
   isLessThan(a: number, t?: OPERATOR) {
     this.queue.enqueue({
       type: t,

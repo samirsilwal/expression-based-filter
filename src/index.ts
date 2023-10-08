@@ -1,4 +1,5 @@
 import { OPERATOR } from './operators';
+import { Predicate } from './predicate';
 import { generatePredicateFromConfig } from './compute';
 
 const data = [
@@ -26,11 +27,11 @@ const config = [
     operator: OPERATOR.isGreaterThan,
     compareWith: 5
   },
-  {
-    operand: 'value2',
-    operator: OPERATOR.andIsLessThan,
-    compareWith: '$.test.nested'
-  }
+  // {
+  //   operand: 'value2',
+  //   operator: OPERATOR.andIsLessThan,
+  //   compareWith: '$.test.nested'
+  // },
   // {
   //   operand: 'value2',
   //   operator: OPERATOR.andIsEqualTo,
@@ -44,3 +45,10 @@ console.log(
     return exp.computeFor(obj, config);
   })
 );
+
+console.log(new Predicate().isGreaterThan(5).and().isLessThan(10).computeForVal(8)) //true
+console.log(new Predicate().isGreaterThan(5).and().isLessThan(10).computeForVal(10)) //false
+console.log(new Predicate().isGreaterThan(5).and().isLessThan(10).computeForVal(3)) //false
+
+console.log(new Predicate().isEqualTo('test').computeForVal('test')) //true
+console.log(new Predicate().isEqualTo('test').computeForVal('test1')) //false

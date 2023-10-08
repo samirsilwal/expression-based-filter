@@ -58,6 +58,12 @@ data.filter(obj => {
 ```
 ## Direct chain expression
 ```
+console.log(new Predicate().isGreaterThan(5).and().isLessThan(10).computeForVal(8)) //true
+console.log(new Predicate().isGreaterThan(5).and().isLessThan(10).computeForVal(10)) //false
+console.log(new Predicate().isGreaterThan(5).and().isLessThan(10).computeForVal(3)) //false
+
+console.log(new Predicate().isEqualTo('test').computeForVal('test')) //true
+console.log(new Predicate().isEqualTo('test').computeForVal('test1')) //false
 
 ```
 
