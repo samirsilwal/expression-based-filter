@@ -26,7 +26,7 @@ export class Predicate {
     return computed;
   }
 
-  isLessThan(a: number, t: OPERATOR) {
+  isLessThan(a: number, t?: OPERATOR) {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
@@ -41,7 +41,7 @@ export class Predicate {
     return this;
   }
 
-  isGreaterThan(a: number, t: OPERATOR) {
+  isGreaterThan(a: number, t?: OPERATOR) {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
@@ -56,7 +56,7 @@ export class Predicate {
     return this;
   }
 
-  isEqualTo(a: number | string, t: OPERATOR) {
+  isEqualTo(a: number | string, t?: OPERATOR) {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
@@ -69,7 +69,7 @@ export class Predicate {
     return this;
   }
 
-  hasSubstring(a: string, t: OPERATOR) {
+  hasSubstring(a: string, t?: OPERATOR) {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
@@ -85,7 +85,7 @@ export class Predicate {
     return this;
   }
 
-  isLessThanInclusive(a: number, t: OPERATOR) {
+  isLessThanInclusive(a: number, t?: OPERATOR) {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,
@@ -99,7 +99,7 @@ export class Predicate {
 
     return this;
   }
-  isGreaterThanInclusive(a: number, t: OPERATOR) {
+  isGreaterThanInclusive(a: number, t?: OPERATOR) {
     this.queue.enqueue({
       type: t,
       chain: this.chainOperator,

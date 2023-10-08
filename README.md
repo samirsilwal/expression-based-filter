@@ -54,6 +54,11 @@ data.filter(obj => {
   const exp = generatePredicateFromConfig(config, obj)
   return exp.computeFor(obj, config)
 })
+
+```
+## Direct chain expression
+```
+
 ```
 
 ## Run

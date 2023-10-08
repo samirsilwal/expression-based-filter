@@ -5,7 +5,7 @@ export interface Mapping<T> {
 }
 
 export interface QueueContent {
-  type: OPERATOR;
+  type?: OPERATOR;
   chain: ChainOperator;
   method: (val: number | string) => boolean;
 }
